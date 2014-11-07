@@ -226,13 +226,6 @@ _.extend(LayeredCatalog.prototype, {
     return this.localCatalog.isLocalPackage(name);
   },
 
-  rebuildLocalPackages: function (namedPackages) {
-    this.packageCache.refresh();
-    this.resolver = null;
-
-    return this.localCatalog.rebuildLocalPackages(namedPackages);
-  },
-
   reset: function () {
     this.localCatalog.reset();
   },
