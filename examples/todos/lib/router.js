@@ -31,8 +31,18 @@ if (Meteor.isClient) {
 }
 
 Router.map(function() {
-  this.route('join');
-  this.route('signin');
+  this.route('join', {
+      yieldTemplates: {
+          'Menu': {to: 'menu'}
+      }
+  });
+  this.route('signin', {
+    yieldTemplates: {
+        'Menu': {to: 'menu'}
+    }
+  });
+  this.route('todosDetail');
+
 
   this.route('listsShow', {
     path: '/lists/:_id',
@@ -56,9 +66,14 @@ Router.map(function() {
 
   this.route('home', {
     path: '/',
-    action: function() {
-      Router.go('listsShow', Lists.findOne());
-    }
+    yieldTemplates: {
+        'Menu': {to: 'menu'},
+        'Header': {to: 'header'},
+        'Footer': {to: 'footer'}
+      }//,
+    //action: function() {
+    //  Router.go('listsShow', Lists.findOne());
+    //}
   });
 });
 
