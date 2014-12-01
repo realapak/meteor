@@ -8,11 +8,11 @@ Router.configure({
   // show the appLoading template whilst the subscriptions below load their data
   loadingTemplate: 'appLoading',
 
-  // wait on the following subscriptions before rendering the page to ensure
+  /// wait on the following subscriptions before rendering the page to ensure
   // the data it's expecting is present
   waitOn: function() {
     return [
-      Meteor.subscribe('publicLists'),
+      //Meteor.subscribe('publicLists')//,
       Meteor.subscribe('privateLists')
     ];
   }
@@ -30,6 +30,12 @@ if (Meteor.isClient) {
   Router.onBeforeAction('dataNotFound', {except: ['join', 'signin']});
 }
 
+Router.route('listsShow', function () {
+    // wait on the following subscriptions before rendering the page to ensure
+    // the data it's expecting is present
+
+});
+
 Router.map(function() {
   this.route('join', {
       yieldTemplates: {
@@ -41,8 +47,8 @@ Router.map(function() {
         'Menu': {to: 'menu'}
     }
   });
-  this.route('todosDetail');
 
+  this.route('todosDetail');
 
   this.route('listsShow', {
     path: '/lists/:_id',
@@ -70,7 +76,9 @@ Router.map(function() {
         'Menu': {to: 'menu'},
         'Header': {to: 'header'},
         'Footer': {to: 'footer'}
-      }//,
+    }
+
+      //,
     //action: function() {
     //  Router.go('listsShow', Lists.findOne());
     //}
@@ -79,5 +87,5 @@ Router.map(function() {
 
 if (Meteor.isClient) {
   Router.onBeforeAction('loading', {except: ['join', 'signin']});
-  Router.onBeforeAction('dataNotFound', {except: ['join', 'signin']});
+  Router.onBeforeAction('dataNotFound', {except: ['home', 'join', 'signin']});
 }

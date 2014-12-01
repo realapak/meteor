@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">TypoAd</a>
+                <a class="navbar-brand page-scroll" href="{{pathFor 'home'}}">TypoAd</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -22,8 +22,8 @@
                     <li><a href="{{pathFor 'listsShow'}}" class="btn-secondary">List</a></li>
                     <li><a class="js-logout btn-secondary">Logout</a></li>
                     {{else}}
-                    <li><a href="{{pathFor 'signin'}}" class="btn-secondary">Sign In</a></li>
-                    <li><a href="{{pathFor 'join'}}" class="btn-secondary">Join</a></li>
+                    <li><a href="{{pathFor 'signin'}}" class="btn-secondary {{isActiveRoute 'active'}} ">Sign In</a></li>
+                    <li><a href="{{pathFor 'join'}}" class="btn-secondary ">Join</a></li>
                     {{/if}}
                 </ul>
             </div>
