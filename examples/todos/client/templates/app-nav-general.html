@@ -1,7 +1,7 @@
-<template name="Menu">
+<template name="MenuGeneral">
 
     <!-- NAVBAR   ================================================== -->
-    <div class="navbar-wrapper cbp-af-header">
+    <div class="navbar-wrapper cbp-af-header cbp-af-header-shrink">
         <div class="container">
 
             <!-- Fixed navbar -->
@@ -19,15 +19,9 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav pull-right">
                             {{#if currentUser}}
-                            <li><a class="hidden-sm" href="#about">O que é</a></li>
-                            <li><a class="hidden-sm" href="#testimonials">Testemunhos</a></li>
-                            <li><a class="hidden-sm" href="#pricing">Preço</a></li>
                             <li><a href="{{pathFor 'listsShow'}}" class="listshow">Pedidos</a></li>
                             <li><a class="js-logout">Logout</a></li>
                             {{else}}
-                            <li><a href="#about">O que é</a></li>
-                            <li><a href="#testimonials">Testemunhos</a></li>
-                            <li><a class="hidden-sm" href="#pricing">Preço</a></li>
                             <li><a class="signup" href="#">Inscrever-se</a></li>
                             <li><a class="login" href="#">Login</a></li>
                             {{/if}}

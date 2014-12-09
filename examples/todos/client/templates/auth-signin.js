@@ -19,7 +19,8 @@ Template.signin.events({
     
     var email = template.$('[name=email]').val();
     var password = template.$('[name=password]').val();
-    
+    console.log(email);
+    console.log(password);
     var errors = {};
 
     if (! email) {
@@ -40,7 +41,7 @@ Template.signin.events({
         return Session.set(ERRORS_KEY, {'none': error.reason});
       }
       
-      Router.go('home');
+      Router.go('join');
     });
   }
 });

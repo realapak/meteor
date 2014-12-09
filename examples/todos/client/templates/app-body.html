@@ -15,8 +15,6 @@
     </div>
     {{/unless}}
 
-    <!--<div class="content-overlay"></div>-->
-
     <div id="content-container" >
         {{#each thisArray}}
         {{> yield}}
@@ -24,6 +22,8 @@
     </div>
 
 
+    {{> yield region="signin"}}
+    {{> yield region="join"}}
 
     {{> yield region="footer"}}
 

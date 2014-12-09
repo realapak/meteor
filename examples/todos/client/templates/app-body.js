@@ -32,8 +32,9 @@ Meteor.startup(function () {
   }, CONNECTION_ISSUE_TIMEOUT);
 });
 
+
 Template.appBody.rendered = function() {
-  this.find('#content-container')._uihooks = {
+  /*this.find('#content-container')._uihooks = {
     insertElement: function(node, next) {
       $(node)
         .hide()
@@ -47,7 +48,7 @@ Template.appBody.rendered = function() {
         $(this).remove();
       });
     }
-  };
+  };*/
 };
 
 Template.appBody.helpers({

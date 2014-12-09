@@ -12,7 +12,7 @@ Router.configure({
   // the data it's expecting is present
   waitOn: function() {
     return [
-      //Meteor.subscribe('publicLists')//,
+      Meteor.subscribe('publicLists'),
       Meteor.subscribe('privateLists')
     ];
   }
@@ -29,12 +29,6 @@ if (Meteor.isClient) {
   Router.onBeforeAction('loading', {except: ['join', 'signin']});
   Router.onBeforeAction('dataNotFound', {except: ['join', 'signin']});
 }
-
-Router.route('listsShow', function () {
-    // wait on the following subscriptions before rendering the page to ensure
-    // the data it's expecting is present
-
-});
 
 Router.map(function() {
   this.route('join', {
@@ -75,7 +69,15 @@ Router.map(function() {
     yieldTemplates: {
         'Menu': {to: 'menu'},
         'Header': {to: 'header'},
+        'Signin': {to: 'signin'},
+        'Join': {to: 'join'},
+
         'Footer': {to: 'footer'}
+    },
+    onAfterAction: function () {
+        var cbpAnimatedHeader=(function(){var b=document.documentElement,g=document.querySelector(".cbp-af-header"),e=false,a=300;console.log(g);function f(){window.addEventListener("scroll",function(h){if(!e){e=true;setTimeout(d,250)}},false)}function d(){var h=c();if(h>=a){classie.add(g,"cbp-af-header-shrink")}else{classie.remove(g,"cbp-af-header-shrink")}e=false}function c(){return window.pageYOffset||b.scrollTop}f()})();
+
+
     }
 
       //,
@@ -83,9 +85,26 @@ Router.map(function() {
     //  Router.go('listsShow', Lists.findOne());
     //}
   });
+
+  this.route('adNew', {
+        path: '/adnew',
+        yieldTemplates: {
+            'MenuGeneral': {to: 'menu'}
+        },
+        onAfterAction: function () {
+        }
+
+        //,
+        //action: function() {
+        //  Router.go('listsShow', Lists.findOne());
+        //}
+    });
+
+
+
 });
 
 if (Meteor.isClient) {
   Router.onBeforeAction('loading', {except: ['join', 'signin']});
-  Router.onBeforeAction('dataNotFound', {except: ['home', 'join', 'signin']});
+  Router.onBeforeAction('dataNotFound', {except: [ 'join', 'signin']});
 }
